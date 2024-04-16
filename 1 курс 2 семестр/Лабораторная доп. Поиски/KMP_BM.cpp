@@ -12,7 +12,7 @@ void calc_char_table(string str, int size, int char_table[CHAR_NUM]) {
     }
 
     for (int i = 0; i < size; i++) {
-        char_table[(int)str[i]] = i;       // принудительное приведение типов 
+        char_table[(int)str[i]] = i;       // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
     }
 }
 
@@ -34,7 +34,7 @@ void boyer_moore_search(string str, string pat) {
         }
 
         if (j < 0) {
-            cout << "Паттерн найден по индексу: " << shift << endl; 
+            cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << shift << endl; 
             if (shift + pat_size < str_size) {
                 shift += pat_size - shift_table[(int)str[shift + pat_size]];
             }
@@ -88,7 +88,7 @@ void knuth_morris_pratt_search(string str, string pat) {
         }
 
         if (pat_idx == pat_size) {
-            cout << "Паттерн найден по индексу: " << str_idx - pat_idx << endl;
+            cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " << str_idx - pat_idx << endl;
             pat_idx = lps[pat_idx - 1];
         }
         else if (str_idx < str_size && pat[pat_idx] != str[str_idx]) {
@@ -107,14 +107,14 @@ void knuth_morris_pratt_search(string str, string pat) {
 int main() {
     setlocale(LC_ALL, "RUS");
     string str, substr;
-    cout << "Введите строку, затем подстроку:" << endl;
+    cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:" << endl;
     getline(cin, str);
     getline(cin, substr);
 
-    cout << "Результат по поиску Бойера-Мура:" << endl;
+    cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ:" << endl;
     boyer_moore_search(str, substr);
 
-    cout << "Результат по поиску Кнута-Морриса-Пратта:" << endl;
+    cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ:" << endl;
     knuth_morris_pratt_search(str, substr);
 
     return 0;
