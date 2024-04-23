@@ -92,7 +92,7 @@ int main()
 
 # UML
 
-<image src="OOP#1.png">
+<image src="1.png">
 
 # Пример работы
 
