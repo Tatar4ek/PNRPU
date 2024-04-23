@@ -6,18 +6,22 @@ class someclass
 private:
     double first, second, x;
 public:
-    someclass(double a, double b)
-    {
-        first = a;
-        second = b;
-    }
- 
-    double function(double x)
-    {
-        int A = first;
-        int B = second;
-        return A*x + B;
-    }
+void setfirst(double A)
+{
+    first = A;
+}
+void setsecond(double B)
+{
+    second = B;
+}
+void setx(double valueX)
+{
+    x = valueX;
+}
+double function(double x)
+{
+    return first*x + second;
+}
 };
  
 int main()
@@ -27,6 +31,9 @@ int main()
     cout << "\n¬ведите значение first="; cin >> first;
     cout << "\n¬ведите значение second="; cin >> second;
     cout << "\n¬ведите значение x="; cin >> x;
-    someclass t(first,second);
+    someclass t;
+    t.setfirst(first);
+    t.setsecond(second);
+    t.setx(x);
     cout << t.function(x) << endl;
 }
