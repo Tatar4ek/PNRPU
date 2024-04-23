@@ -1,4 +1,3 @@
-//processor - string, RAM - int, hard drive - int
 #include <iostream>
 #include <string>
 using namespace std;
@@ -22,7 +21,7 @@ Computer(string P, int R, int D)
     processor = P;
     ram = R;
     drive = D;
-    cout << "Конструктор с заданными параметрами" << endl;
+    cout << "Конструктор с" << endl;
 }
 
 Computer(const Computer &c)
@@ -30,12 +29,12 @@ Computer(const Computer &c)
     processor = c.processor;
     ram = c.ram;
     drive = c.drive;
-    cout << "Скопированный конструктор" << endl;
+    cout << "Конструктор копирования" << endl;
 }
 
 ~Computer()
 {
-    cout << "АНДРЕЙ-СТАРОСТА" << endl;
+    cout << "Деструктор" << endl;
 }
 
 string get_processor()
@@ -70,8 +69,8 @@ void set_drive(int D)
 
 void show()
 {
-    cout << "Название процессора: " << processor<<endl;
-    cout << "Объем ОЗУ= " <<ram<<endl;
-    cout << "Объем ЖД= "<<drive<<endl;
+    cout << "Процессор: " << processor<<endl;
+    cout << "ОЗУ= " <<ram<<endl;
+    cout << "ЖД= "<<drive<<endl;
 }
 };
