@@ -2,6 +2,7 @@
 
 class Money
 {
+    
     private:
         long rub;
         int kop;
