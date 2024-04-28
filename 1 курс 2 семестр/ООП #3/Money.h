@@ -53,7 +53,7 @@ class Money
             return *this;
         }
         
-        Money& operator/= (const Money &other)
+        Money& operator /= (const Money &other)
         {
             int temp1 = rub*100 + kop;
             int temp2 = other.rub*100 + other.kop;
@@ -62,7 +62,7 @@ class Money
             return *this;
         }
 
-        Money& operator*= (float n)
+        Money& operator *= (float n)
         {
             int temp1 = rub*100 + kop;
             int temp2 = temp1*n / 100;
@@ -71,14 +71,14 @@ class Money
             return *this;
         }
 
-        friend istream& operator>> (istream&in, Money&other)
+        friend istream& operator >> (istream&in, Money&other)
         {
             cout << "rub: "; in>>other.rub;
             cout << "kop: "; in>>other.kop;
             return in;
         } 
 
-        friend ostream&operator<<(ostream&out, const Money&other)
+        friend ostream&operator << (ostream&out, const Money&other)
         {
             return (out<<other.rub<<","<<other.kop);
         }

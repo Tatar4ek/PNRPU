@@ -10,7 +10,7 @@ int main()
     cin>>q;
     m /= q;
     q *= 3.4;
-    cout<<m<<endl;
-    cout<<q<<endl;
+    cout<<"Результат деления сумм: " << m <<endl;
+    cout<<"Результат умножения на дробное число 3.4: " << q <<endl;
     return 0;
 }
