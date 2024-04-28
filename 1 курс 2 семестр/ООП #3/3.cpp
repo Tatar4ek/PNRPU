@@ -5,6 +5,12 @@ int main()
 {
     system("chcp 1251");
     Money m;
-    m.set_kop(10);
-    m.show();
+    Money q;
+    cin>>m;
+    cin>>q;
+    m /= q;
+    q *= 3.4;
+    cout<<m<<endl;
+    cout<<q<<endl;
+    return 0;
 }
