@@ -8,8 +8,11 @@ private:
     int size;
 
 public:
-    Set() : data(nullptr), size(0) {}
-
+    Set()
+    {
+    data = nullptr; 
+    size = 0;
+    }
     ~Set() {
         delete[] data;
     }

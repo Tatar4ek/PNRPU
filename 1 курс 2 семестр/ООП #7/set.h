@@ -1,10 +1,11 @@
+#pragma once
 #include <iostream>
+#include <stdexcept>
 
-using namespace std;
-
+template<typename T>
 class Set {
 private:
-    int* data;
+    T* data;
     int size;
 
 public:
@@ -14,9 +15,9 @@ public:
         delete[] data;
     }
 
-    void add(int value) {
+    void add(T value) {
         if (!contains(value)) {
-            int* new_data = new int[size + 1];
+            T* new_data = new T[size + 1];
             for (int i = 0; i < size; ++i) {
                 new_data[i] = data[i];
             }
@@ -27,7 +28,7 @@ public:
         }
     }
 
-    bool contains(int value) const {
+    bool contains(T value) const {
         for (int i = 0; i < size; ++i) {
             if (data[i] == value) {
                 return true;
@@ -36,9 +37,9 @@ public:
         return false;
     }
 
-    int operator[](int index) const {
+    T operator[](int index) const {
         if (index < 0 || index >= size) {
-            throw out_of_range("Index out of range");
+            throw std::out_of_range("Index out of range");
         }
         return data[index];
     }
@@ -47,8 +48,8 @@ public:
         return size;
     }
 
-    Set operator*(const Set& other) const {
-        Set result;
+    Set<T> operator*(const Set<T>& other) const {
+        Set<T> result;
         for (int i = 0; i < size; ++i) {
             if (other.contains(data[i])) {
                 result.add(data[i]);
@@ -59,33 +60,9 @@ public:
 
     void print() const {
         for (int i = 0; i < size; i++) {
-            cout << data[i] << " ";
+            std::cout << data[i] << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 };
 
-int main() {
-    Set set1;
-    set1.add(1);
-    set1.add(2);
-    set1.add(3);
-
-    Set set2;
-    set2.add(2);
-    set2.add(3);
-    set2.add(4);
-
-    Set set3 = set1 * set2;
-
-    cout << "Elements of set1: ";
-    set1.print();
-
-    cout << "Elements of set2: ";
-    set2.print();
-
-    cout << "Intersection of set1 and set2: ";
-    set3.print();
-
-    return 0;
-}
