@@ -41,7 +41,7 @@ public:
 
     int operator[](int index) const {
         if (index < 0 || index >= size) {
-            throw out_of_range("Index out of range");
+            throw out_of_range("»ндекс находитс€ вне size");
         }
         return data[index];
     }
@@ -69,6 +69,7 @@ public:
 };
 
 int main() {
+    system("chcp 1251");
     Set set1;
     set1.add(1);
     set1.add(2);
@@ -79,16 +80,20 @@ int main() {
     set2.add(3);
     set2.add(4);
 
-    Set set3 = set1 * set2;
-
-    cout << "Elements of set1: ";
+    cout << "Ёлементы set1: ";
     set1.print();
 
-    cout << "Elements of set2: ";
+    cout << "Ёлементы set2: ";
     set2.print();
 
-    cout << "Intersection of set1 and set2: ";
-    set3.print();
+    Set intersection = set1 * set2;
+
+    cout << "–езультат пересечени€ set1 и set2: ";
+    intersection.print();
+
+    cout << "Ёлемент с индексом 1 в set1: " << set1[1] << endl;
+
+    cout << "–азмер set1: " << int(set1) << endl;
 
     return 0;
 }

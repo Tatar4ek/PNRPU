@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+    system("chcp 1251");
     Vector vect(5);
     Pair pair;
     cout<< "Введите два числа: " << endl;
@@ -23,6 +24,4 @@ int main()
 
     cout << "Содержание вектора: " << endl;
     cout << vect;
-
-
 }

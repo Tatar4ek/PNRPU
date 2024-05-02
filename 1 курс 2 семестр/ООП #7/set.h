@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <stdexcept>
 
 template<typename T>
 class Set {
