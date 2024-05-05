@@ -11,206 +11,326 @@
 Класс-контейнер МНОЖЕСТВО с элементами типа int.
 Реализовать операции:
 [] - доступа по индексу;
-int() - определить размер вектора;
-*- пересечение множеств;
--- - переход к предыдущему элементу (с помощью класс-итератора)
+int() - определение размера вектора;
+\* - пересечение множеств;
+\-- - переход к предыдущему элементу ( с помощью класса-итератора )
 ## Код программы
 
->6.cpp
+>iterator.h
 ```C++
+#pragma once
+
 #include <iostream>
 
   
 
-using namespace std;
+class Iterator
 
-  
+{
 
-class Set {
+    friend class Set;
 
 private:
 
-    int* data;
-
-    int size;
+    int* current; // Указатель на текущий элемент
 
   
 
 public:
 
-    Set()
+    Iterator(int* ptr) : current(ptr) {}
+
+    // Перегрузка операторов для итератора
+
+    Iterator& operator++() // Префиксный инкремент для перехода к следующему элементу
 
     {
 
-    data = nullptr;
+        ++current;
 
-    size = 0;
-
-    }
-
-    ~Set() {
-
-        delete[] data;
+        return *this;
 
     }
 
   
 
-    void add(int value) {
+    Iterator& operator--() // Префиксный декремент для перехода к предыдущему элементу
 
-        if (!contains(value)) {
+    {
 
-            int* new_data = new int[size + 1];
+        --current;
 
-            for (int i = 0; i < size; ++i) {
-
-                new_data[i] = data[i];
-
-            }
-
-            new_data[size] = value;
-
-            size++;
-
-            delete[] data;
-
-            data = new_data;
-
-        }
+        return *this;
 
     }
 
   
 
-    bool contains(int value) const {
+    int& operator*() // Доступ к значению, на которое указывает итератор
 
-        for (int i = 0; i < size; ++i) {
+    {
 
-            if (data[i] == value) {
-
-                return true;
-
-            }
-
-        }
-
-        return false;
+        return *current;
 
     }
 
   
 
-    int operator[](int index) const {
+    bool operator!=(const Iterator& other) const // Проверка на неравенство итераторов
 
-        if (index < 0 || index >= size) {
+    {
 
-            throw out_of_range("Индекс находится вне size");
-
-        }
-
-        return data[index];
+        return current != other.current;
 
     }
 
+};
+```
+
+>set.h
+```C++
+ #pragma once
+
+ #include <iostream>
+
+ #include "iterator.h"
+
+ using namespace std;
+
   
 
-    operator int() const {
+ class Set
+
+{
+
+    int size;
+
+    int count;
+
+    int* p;
+
+public:
+
+   Set (const Set &other)
+
+    {
+
+        this->size = other.size;
+
+        this->count = other.count;
+
+    }
+
+    Set ()
+
+    {
+
+        size = 0;
+
+        count = 0;
+
+    }
+
+    ~Set()
+
+    {
+
+        delete[]p;
+
+    }
+
+    int getSize() const
+
+    {
 
         return size;
 
     }
 
-  
+    int getCount() const
 
-    Set operator*(const Set& other) const {
+    {
 
-        Set result;
+        return count;
 
-        for (int i = 0; i < size; ++i) {
+    }
 
-            if (other.contains(data[i])) {
+    int& operator[] (int index)
 
-                result.add(data[i]);
+    {
 
-            }
+    if (index >= 0 && index < size)
 
-        }
+    {
 
-        return result;
+        return p[index];
+
+    }
+
+    }
+
+    bool isInSet(const int& n) const
+
+    {
+
+        for (int i = 0; i < size; i++)
+
+            if (p[i] == n) return true;
+
+        return false;
+
+    }
+
+    Set& operator = (const Set& s)
+
+    {
+
+        size = s.size;
+
+        p = new int[count];
+
+        return *this;
+
+    }
+
+    Set& operator += (const int& s)
+
+    {
+
+    if (isInSet(s)) return *this;
+
+    int* tmp = new int[size + 1];
+
+    for (int i = 0; i < size; i++)
+
+    {
+
+        tmp[i] = p[i];
+
+    }
+
+    tmp[size] = s;
+
+    size++;
+
+    delete[] p;
+
+    p = tmp;
+
+    return *this;
 
     }
 
   
 
-    void print() const {
+    Set operator * (const Set& s) const
 
-        for (int i = 0; i < size; i++) {
+    {
 
-            cout << data[i] << " ";
+    Set intersectionSet;
+
+  
+
+    for (int i = 0; i < size; i++)
+
+    {
+
+        if (s.isInSet(p[i]))
+
+        {
+
+            intersectionSet += p[i];
 
         }
 
-        cout << endl;
+    }
+
+    return intersectionSet;
+
+    }
+
+  
+
+    Iterator get_last()
+
+    {
+
+        if (size > 0) {
+
+            return Iterator(&p[size - 1]);
+
+        } else {
+
+            return Iterator(nullptr);
+
+        }
+
+    }
+
+    friend istream& operator >> (istream& in, Set& s)
+
+    {
+
+        cout << "Enter power: ";
+
+        in >> s.size;
+
+        s.p = new int[s.size];
+
+        cout << "Enter chars: ";
+
+        for (int i = 0; i < s.size; i++)
+
+            in >> s.p[i];
+
+        return in;
+
+    }
+
+  
+
+    friend ostream& operator << (ostream& out, const Set& s)
+
+    {
+
+        out << "{ ";
+
+        for (int i = 0; i < s.size - 1; i++)
+
+            out << s.p[i] << ", ";
+
+        out << s.p[s.size - 1] << " }";
+
+        return out;
 
     }
 
 };
+```
+
+>6.cpp
+```C++
+#include <iostream>
+
+#include "set.h"
+
+using namespace std;
 
   
 
 int main() {
 
-    system("chcp 1251");
-
     Set set1;
 
-    set1.add(1);
+    cin >> set1;
 
-    set1.add(2);
+    cout << set1[1] << endl;
 
-    set1.add(3);
+    Iterator it = set1.get_last();
 
-  
+    --it;
 
-    Set set2;
-
-    set2.add(2);
-
-    set2.add(3);
-
-    set2.add(4);
-
-  
-
-    cout << "Элементы set1: ";
-
-    set1.print();
-
-  
-
-    cout << "Элементы set2: ";
-
-    set2.print();
-
-  
-
-    Set intersection = set1 * set2;
-
-  
-
-    cout << "Результат пересечения set1 и set2: ";
-
-    intersection.print();
-
-  
-
-    cout << "Элемент с индексом 1 в set1: " << set1[1] << endl;
-
-  
-
-    cout << "Размер set1: " << int(set1) << endl;
-
-  
+    cout << *(it);
 
     return 0;
 
@@ -223,11 +343,14 @@ int main() {
 # Пример работы
 
 ```
-Элементы set1: 1 2 3
-Элементы set2: 2 3 4
-Результат пересечения set1 и set2: 2 3
-Элемент с индексом 1 в set1: 2
-Размер set1: 3
+Enter power: 5
+Enter chars: 3
+5
+7
+8
+9
+Последний элемент: (Итератор находится на последнем элементе) 9
+Предпоследний элемент: (Итератор перемещен назад на 1 элемент от последнего элемента) 8
 ```
 
 # Вопросы
