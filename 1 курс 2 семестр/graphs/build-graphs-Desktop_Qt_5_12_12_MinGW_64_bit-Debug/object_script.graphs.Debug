@@ -1,0 +1,11 @@
+debug/DelEdgeWindow.o
+debug/DelNodeWindow.o
+debug/NewEdgeWindow.o
+debug/graph.o
+debug/main.o
+debug/mainwindow.o
+debug/qrc_images.o
+debug/moc_DelEdgeWindow.o
+debug/moc_DelNodeWindow.o
+debug/moc_NewEdgeWindow.o
+debug/moc_mainwindow.o
