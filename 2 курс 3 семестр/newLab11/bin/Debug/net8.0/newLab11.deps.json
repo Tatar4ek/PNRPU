@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "newLab11/1.0.0": {
+        "dependencies": {
+          "LibraryLab10": "1.0.0"
+        },
+        "runtime": {
+          "newLab11.dll": {}
+        }
+      },
+      "LibraryLab10/1.0.0": {
+        "runtime": {
+          "LibraryLab10.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "newLab11/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LibraryLab10/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
