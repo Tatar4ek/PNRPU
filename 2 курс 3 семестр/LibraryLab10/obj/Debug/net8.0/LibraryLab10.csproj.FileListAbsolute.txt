@@ -1,0 +1,11 @@
+C:\Users\hbyfn\source\repos\LibraryLab10\bin\Debug\net8.0\LibraryLab10.deps.json
+C:\Users\hbyfn\source\repos\LibraryLab10\bin\Debug\net8.0\LibraryLab10.dll
+C:\Users\hbyfn\source\repos\LibraryLab10\bin\Debug\net8.0\LibraryLab10.pdb
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.AssemblyInfoInputs.cache
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.AssemblyInfo.cs
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.csproj.CoreCompileInputs.cache
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.dll
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\refint\LibraryLab10.dll
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\LibraryLab10.pdb
+C:\Users\hbyfn\source\repos\LibraryLab10\obj\Debug\net8.0\ref\LibraryLab10.dll
